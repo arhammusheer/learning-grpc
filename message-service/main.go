@@ -3,8 +3,9 @@ package main
 import (
 	"log"
 	"net"
+
 	"google.golang.org/grpc"
-	"github.com/arhammusheer/learning-grpc/proto/message"
+	"google.golang.org/protobuf/proto"
 )
 
 func main() {
@@ -14,10 +15,11 @@ func main() {
 	}
 
 	grpcServer := grpc.NewServer()
-	proto.RegisterMessageServiceServer(grpcServer, NewMessageServiceServer())
-
+	grpcServer.RegisterService(&proto.Mss, &server{})
+	proto.RegisterMessageServiceServer(grpcServer, &server{})
 	log.Println("Message Service is running on port 50052...")
 	if err := grpcServer.Serve(listener); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
 }
+

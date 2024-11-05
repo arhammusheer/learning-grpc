@@ -1,5 +1,5 @@
 syntax = "proto3";
-option go_package = "github.com/arhammusheer/learning-grpc/proto/user";
+option go_package = "arhammusheer/learning-grpc/proto/user;user";
 
 package user;
 

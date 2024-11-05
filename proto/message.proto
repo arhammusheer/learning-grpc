@@ -1,0 +1,29 @@
+syntax = "proto3";
+option go_package = "arhammusheer/learning-grpc/proto/message";
+
+package message;
+
+service MessageService {
+  rpc SendMessage (SendMessageRequest) returns (MessageResponse);
+  rpc GetMessages (GetMessagesRequest) returns (MessagesResponse);
+}
+
+message SendMessageRequest {
+  string user_id = 1;
+  string content = 2;
+}
+
+message GetMessagesRequest {
+  string user_id = 1;
+}
+
+message MessageResponse {
+  string message_id = 1;
+  string user_id = 2;
+  string content = 3;
+  string timestamp = 4;
+}
+
+message MessagesResponse {
+  repeated MessageResponse messages = 1;
+}

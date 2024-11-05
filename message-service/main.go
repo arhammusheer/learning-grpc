@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 	"net"
-	"github.com/arhammusheer/learning-grpc/proto"
 	"google.golang.org/grpc"
+	"github.com/arhammusheer/learning-grpc/proto/message"
 )
 
 func main() {

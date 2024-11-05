@@ -3,7 +3,7 @@ syntax = "proto3";
 package message;
 
 // Specify the Go package for the generated code
-option go_package = "proto/message;message";
+option go_package = "proto/message";
 
 service MessageService {
   rpc SendMessage (SendMessageRequest) returns (MessageResponse);

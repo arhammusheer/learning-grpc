@@ -1,8 +1,9 @@
 #!/bin/bash
 
-USER_SERVICE_DIR="user-service/proto"
-MESSAGE_SERVICE_DIR="message-service/proto"
+USER_SERVICE_DIR="proto/user"
+MESSAGE_SERVICE_DIR="proto/message"
 BACKUP_DIRS=()
+PROJECT_DIR=$(pwd)
 
 # Make backup of directories if they exist
 if [ -d "$USER_SERVICE_DIR" ]; then
@@ -37,18 +38,10 @@ mkdir -p "$USER_SERVICE_DIR"
 mkdir -p "$MESSAGE_SERVICE_DIR"
 
 # Generate code for User Service
-protoc --go_out="$USER_SERVICE_DIR" --go-grpc_out="$USER_SERVICE_DIR" proto/user.proto
+protoc --go_out="$PROJECT_DIR/" --go-grpc_out="$PROJECT_DIR/" proto/user.proto
 
 # Generate code for Message Service
-protoc --go_out="$MESSAGE_SERVICE_DIR" --go-grpc_out="$MESSAGE_SERVICE_DIR" proto/message.proto 
-
-
-# Move the generated files to the correct directory
-mv message-service/proto/proto/message/* message-service/proto/
-rm -rf message-service/proto/proto
-
-mv user-service/proto/proto/user/* user-service/proto/
-rm -rf user-service/proto/proto
+protoc --go_out="$PROJECT_DIR/" --go-grpc_out="$PROJECT_DIR/" proto/message.proto 
 
 
 # Remove backups if everything succeeds

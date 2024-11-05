@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net"
-	"message/proto"
+	"github.com/arhammusheer/learning-grpc/proto"
 	"google.golang.org/grpc"
 )
 

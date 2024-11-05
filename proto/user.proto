@@ -3,7 +3,7 @@ syntax = "proto3";
 package user;
 
 // Specify the Go package for the generated code
-option go_package = "proto/user";
+option go_package = "github.com/arhammusheer/learning-grpc/proto/user";
 
 service UserService {
   rpc CreateUser (CreateUserRequest) returns (UserResponse);
